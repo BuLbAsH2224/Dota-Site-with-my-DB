@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>SignUp</title>
+</head>
+
+<body class="SignUpBodyBackground">
+<div id="message_box">
+<h1 id="message" style="color: white;"></h1>
+<button style="border-radius: 1vw; "><a href="/" style="text-decoration: none;">ОК</a></button>
+</div>
+    <div class="SignUpForm">
+    <form action="submit" onsubmit="sendForm(event)">
+      <center><h1 style="color: white;">Регистрация</h1></center>
+        <div>
+      <label for="input">Имя</label>
+      <input type="text" id="name" required>  
+      <h4></h4>
+    </div>
+    <div>
+      <label for="input">Почта</label>
+      <input type="email" id="email" required >
+      <p style="color: red; font-size: 1.2vw;" id="email_error"></p>  
+    </div>
+    <div>
+      <label for="input">Пароль</label>
+      <input type="text" id="password" minlength="8" required> 
+      <h4></h4>
+    </div> 
+    <button type="submit" style="border-radius: 1vw;">Отправить</button>
+    </form>
+</div>
+<script>
+
+
+  function sendForm(event){
+    event.preventDefault()
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value
+    
+    fetch("/checkEmail",{method: "POST",headers: {"Content-Type": "application/json"},body: JSON.stringify({email: email })}).then(res => res.json())
+    .then(res => {if(res){
+document.getElementById("email_error").innerText = ""
+      fetch("/SignUp",{method: "POST",headers: {"Content-Type": "application/json"},body: JSON.stringify({name: name, email: email, password: password })})
+      .then(res => res.json())
+      .then(res => {
+        document.getElementById("message_box").style.display = "block"
+        document.getElementById("message").innerText = res.message
+        localStorage.token = res.token
+
+      })
+
+    }
+    else document.getElementById("email_error").innerText = "Данная электронная почта уже используется"
+  })
+ }
+</script>
+</body>
+
+</html>

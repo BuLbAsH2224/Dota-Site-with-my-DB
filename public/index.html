@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Dota Site</title>
+</head>
+<body>
+    <div id="message_box">
+        <h1 id="message" style="color: white;"></h1>
+        <button style="border-radius: 1vw; color: white; width: 2vw;" onclick="document.querySelector(`#message_box`).style.visibility = `hidden` ">ОК</button>
+        </div>
+    <div   id="allContent">
+    <div id="HeaderBanner">
+        <img src="/images/poloski.png" class="poloski" alt="stripes" > 
+        <img src="/images/cart_icon.png" class="cartBanner" alt="cart">
+        <img src="/images/kubok_icon.png" class="KubokBanner" alt="kubok">
+        <img src="/images/logout_icon.png" class="logoutBanner" alt="logout">
+    </div>
+<button onclick= "addAccount()"  style="cursor: pointer; border-radius: 1vw; width: 20vw; height: 1.5vw; background-color: rgb(68, 68, 148); font-weight: bolder;">Добавить аккаунт на продажу</button>
+<div id="register_message">
+    <h1>Для этого действия надо зарегистрироваться</h1>
+    <div class="buttonsMessage">
+    <button style="border-radius: 1vw; width: 20vw; height: 1.5vw; background-color: rgb(52, 52, 88);"><a  href="/LogIn.html" class="buttonLog">уже зарегистрирован, войти в аккаунт</a></button>
+    <button style="border-radius: 1vw; width: 20vw; height: 1.5vw; background-color: rgb(52, 52, 88);"><a href="/SignUp.html" class="buttonLog">зарегистрироваться</a></button> 
+    </div> 
+</div>
+<div class="filter">
+        <div>
+        <p class="NameP">Цена: </p>
+        <div class="divForInputs">
+        <input type="number" name="Price" class="FORFILTER min"  id="price_min" placeholder="0">
+        <span class="SpanForInputs">-</span>
+        <input type="number" name="Price" class="FORFILTER max"  id="price_max"  placeholder="100000">
+        </div>
+    </div>
+    <div>
+        <p class="NameP" >MMR: </p>
+        <div class="divForInputs">
+        <input type="number" name="MMR" class="FORFILTER min" id="mmr_min" placeholder="0">
+        <span class="SpanForInputs">-</span>
+        <input type="number" name="MMR" class="FORFILTER max" id="mmr_max"  placeholder="100000">
+        </div>
+    </div>
+    <div>
+        <p class="NameP">Порядочность: </p>
+        <div class="divForInputs">
+        <input type="number" name="Decency" class="FORFILTER min"  id="decency_min" placeholder="0">
+        <span class="SpanForInputs">-</span>
+        <input type="number" name="Decency" class="FORFILTER max"  id="decency_max" placeholder="11000" min="0" max="11000">
+    </div>
+    </div>
+    <div>
+        <p class="NameP">Уровень: </p>
+        <div class="divForInputs">
+        <input type="number" name="Level" class="FORFILTER min"  id="level_min" placeholder="0">
+        <span class="SpanForInputs">-</span>
+        <input type="number" name="Level" class="FORFILTER max"    id="level_max" placeholder="100000">
+      </div>
+    </div>
+    <div>
+        <p class="NameP">Матчей: </p>
+        <div class="divForInputs">
+        <input type="number" name="Matches" class="FORFILTER min" id="matches_min" placeholder="0">
+        <span class="SpanForInputs">-</span>
+        <input type="number" name="Matches" class="FORFILTER max" id="matches_max" placeholder="100000">
+        </div>
+        </div>
+        <div>
+            <p class="NameP">Гарантия: </p>
+            <div class="divForInputs">
+            <input type="number" name="Guarnt" class="FORFILTER min" id="guarnt_min" placeholder="0">
+            <span class="SpanForInputs">-</span>
+            <input type="number" name="Guarnt" class="FORFILTER max" id="guarnt_max" placeholder="100000">
+            </div>
+            
+    </div>
+    <button id="send" >Отфильтровать</button>
+    <button id="clear">Очистить</button>
+</div>
+<div class="cartUser"><button class="ButtonClear">Очистить</button><button class="ButtonUpdate">Обновить</button></div>
+<div class="content"></div>
+</div>
+<script src="/javascript/shop.js"></script>
+</body>
+</html>

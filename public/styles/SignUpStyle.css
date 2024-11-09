@@ -1,0 +1,41 @@
+.SignUpBodyBackground{
+
+    background-image: url(images/enigma_background.png);
+    background-repeat: no-repeat;
+    background-size:100vw 100vh;
+    background-attachment: fixed;
+  
+  }
+
+  form{
+position:absolute;
+top: 26vh;
+left: 35vw;
+    border: 0.15vw solid white;
+   border-radius: 1vw;
+    background:  linear-gradient(0deg, rgba(68,48,99,1) 0%, rgba(91,0,255,1) 50%, rgba(167,89,207,1) 100%);
+    width: 30vw;
+    height: 48vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+label{
+  font-size: 30px;
+  color: white;
+}
+div{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+#message_box{
+  position: absolute;
+  display: none;
+  left: 30vw;
+  border-radius: 1vw;
+  border: 0.2vw solid white;
+  background-color: blueviolet;
+  width: 40vw;
+  height: 15vh;
+}

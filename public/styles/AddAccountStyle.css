@@ -1,0 +1,37 @@
+*{
+    color: white;
+}
+body{
+    background: linear-gradient(300deg, rgb(100, 53, 155) 30%, rgb(154, 54, 221) 100%);
+}
+.addForm{
+    position: absolute;
+    top: 20vh;
+    left: 35vw;
+    border: 0.15vw solid white;
+    border-radius: 1vw;
+     background:  linear-gradient(0deg, rgba(68,48,99,1) 0%, rgba(91,0,255,1) 50%, rgba(167,89,207,1) 100%);
+     width: 30vw;
+     height: 60vh;
+     display: flex;
+     justify-content: space-between;
+     flex-direction: column;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    font-size: 1vw;
+}
+#message_box{
+    position: absolute;
+    visibility: hidden;
+    left: 30vw;
+    border-radius: 1vw;
+    border: 0.2vw solid white;
+    background-color: blueviolet;
+    width: 40vw;
+    height: 15vh;
+  }
+  input{
+    color: black;
+  }

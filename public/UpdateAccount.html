@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/AddAccountStyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="message_box">
+        <h1 id="message" style="color: white;"></h1>
+        <button style="border-radius: 1vw; "><a href="/" style="text-decoration: none;">ОК</a></button>
+        </div>
+        <form action="submit" onsubmit="sendForm(event)" class="addForm">
+            <center><h1 style="color: white;">Обновить аккаунт</h1></center>
+        <div class="inputs">
+          <label for="input">Название</label>
+          <input id="title" type="text" required>
+        </div>
+        <div class="inputs">
+            <label for="input">Порядочность</label>
+            <input id="decency" max="12000" type="number" required>
+        </div>
+        <div class="inputs">
+            <label for="input">Описание</label>
+            <input id="description" type="text" required>
+        </div>
+        <div class="inputs">
+            <label for="input">MMR</label>
+            <input id="mmr" type="number" required>
+        </div>
+        <div class="inputs">
+            <label for="input">Цена $</label>
+            <input id="price" type="number" required>
+        </div>
+        <div class="inputs">
+            <label for="input">Дни Гарантии</label>
+            <input id="guarantee" type="number" required>
+        </div>
+        <div class="inputs">
+            <label for="input">Уровень Steam</label>
+            <input id="steamLevel" type="number" required>
+        </div>
+        <div class="inputs">
+            <label for="input">Количество матчей</label>
+            <input id="nOfMatches" type="number" required>
+        </div>
+        <button type="submit" style="border-radius: 1vw; color:black;">Отправить</button>
+        </form>
+        <script>
+            let params = new URLSearchParams(location.search)
+            const id = params.get('id')
+            fetch("/getAccountFromId",{method: "POST",headers: {"Content-Type": "application/json"},body: JSON.stringify({id: id})}).then(res => res.json())
+            .then(res=>{
+                obj = res[0]
+                title = document.getElementById("title").value = obj.title
+                decency = document.getElementById("decency").value = obj.decency
+                description = document.getElementById("description").value = obj.description
+                mmr = document.getElementById("mmr").value = obj.mmr
+                price = document.getElementById("price").value = obj.price
+                guarantee = document.getElementById("guarantee").value = obj.guarantee
+                steamLevel = document.getElementById("steamLevel").value = obj.steamlevel
+                nOfMatches = document.getElementById("nOfMatches").value = obj.nofmatches
+            })
+
+            function sendForm(event){
+                event.preventDefault()
+                const title = document.getElementById("title").value
+                const decency = document.getElementById("decency").value
+                const description = document.getElementById("description").value
+                const mmr = document.getElementById("mmr").value
+                const price = document.getElementById("price").value
+                const guarantee = document.getElementById("guarantee").value
+                const steamLevel = document.getElementById("steamLevel").value
+                const nOfMatches = document.getElementById("nOfMatches").value
+         
+                fetch("/UpdateAccount",{method: "POST",headers: {"Content-Type": "application/json",'Authorization':`Bearer ${localStorage.token}`},body: JSON.stringify({
+                    id: id, title: title, decency: decency ,description: description,mmr: mmr,price: price,guarantee : guarantee,steamLevel: steamLevel, nOfMatches: nOfMatches
+                })}).then(res => res.json())
+                .then(res => {
+                    let el = document.getElementById("message_box")
+                    el.style.visibility = "visible"
+                    let message = document.getElementById("message")
+                    message.innerText = res.message
+                })
+            }
+        </script>
+</body>
+</html>
